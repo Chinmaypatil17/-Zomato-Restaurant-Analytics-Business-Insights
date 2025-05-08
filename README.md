@@ -1,7 +1,7 @@
 # Zomato Restaurant Analytics & Business Insights
 
 ![Dashboard Preview](dashboard_image.png) *<!-- Replace with actual image path -->*
-
+https://github.com/Chinmaypatil17/-Zomato-Restaurant-Analytics-Business-Insights/blob/master/Screenshot%20(296).png
 ## Project Overview
 Analysis of Zomato's restaurant data to uncover business trends and operational insights. The dataset contains 9,000+ records with:
 - Restaurant IDs/Names
@@ -47,11 +47,7 @@ Analysis of Zomato's restaurant data to uncover business trends and operational 
 | **Market Leaders** | North Indian cuisine (936 listings) | Market dominance analysis |
 | **Premium Locations** | Connaught Place, Delhi (11 high-end restaurants) | Targeted marketing |
 
-## Dashboard Features
-- Interactive filters by cuisine/price/location
-- Geographic performance heatmaps
-- Rating vs. price correlation analysis
-- Feature adoption metrics
+
 
 
 ### Connect
