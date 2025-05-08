@@ -1,6 +1,6 @@
-
-select * from [dbo].[Zomato_Dataset_Cleaned]
 use zomato_db;
+select * from [dbo].[Zomato_Dataset_Cleaned]
+
 
 select COLUMN_NAME ,DATA_TYPE
 FROM INFORMATION_SCHEMA.COLUMNS 
@@ -22,10 +22,14 @@ SET
     CountryCode = REPLACE(CountryCode, '?', '');
 
 UPDATE [dbo].[Zomato_Dataset_Cleaned]
-	SET RestaurantName = REPLACE( REPLACE( REPLACE(RestaurantName, '-', ' '), '+', ' ' ), '  ', ' ' ),
+	SET
+	RestaurantName = REPLACE( REPLACE( REPLACE(RestaurantName, '-', ' '), '+', ' ' ), '  ', ' ' ),
 	City = REplace(City,'/',' '),
-	Cuisines = REPLACE(Cuisines,'|',' ')
+	Cuisines = REPLACE(Cuisines,'|',' ');
 
+UPDATE [dbo].[Zomato_Dataset_Cleaned]
+	set
+		RestaurantName =  REPLACE( REPLACE(RestaurantName, '|', ' '), '@', '' );
 
 UPDATE [dbo].[Zomato_Dataset_Cleaned]
 	set
@@ -150,12 +154,17 @@ select *
 from DUPLICATES
 where ROWNUM >1 ;
 
+select count([RestaurantID]) as total_restaurants from [dbo].[Zomato_Dataset_Cleaned];
+
 ALTER TABLE [dbo].[Zomato_Dataset_Cleaned]
 ALTER COLUMN RestaurantID INT NOT NULL;
 
-ALTER TABLE [dbo].[Zomato_Dataset_Cleaned]
-ADD CONSTRAINT CK_AVERAGE_COST_FOR_TWO CHECK ([Average_Cost_for_two] >=0);
+
 
 SELECT *
 FROM dbo.Zomato_Dataset_Cleaned
 WHERE Rating IS NULL OR Rating < 0 OR Rating > 5;
+
+DELETE FROM [dbo].[Zomato_Dataset_Cleaned]
+WHERE Average_Cost_for_two < 1;
+
